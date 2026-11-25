@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vw(min-height, 100);
+    @include vw(padding, 20, 40);
+    @include vw(border-radius, 16);
+    @include vw(font-size, 32);
+
+    &_primary {
+        background-color: $color_primary;
+        color: $color_text;
+    }
+
+    &_secondary {
+        background-color: $color_secondary;
+        color: $color_text;
+    }
+}

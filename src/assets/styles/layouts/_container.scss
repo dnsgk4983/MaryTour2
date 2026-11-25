@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as *;
+
+.container {
+    position: relative;
+    width: 100vw;
+    max-width: $max_width;
+    min-height: 100dvh;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: $color_secondary;
+}

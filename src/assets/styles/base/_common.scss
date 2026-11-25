@@ -1,0 +1,16 @@
+@use "../abstracts/variables" as *;
+
+body {
+    background-color: $color_background;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    border: none;
+    background: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+}

@@ -1,0 +1,9 @@
+@use "sass:math";
+@use "variables" as *;
+
+@function vw($value) {
+    @return calc(
+        min(100vw, $max_width) *
+        math.div($value, $design_width)
+    );
+}
