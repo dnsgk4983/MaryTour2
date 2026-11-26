@@ -1,3 +1,4 @@
+import DemoPage from './pages/DemoPage.jsx';
 import {
     HashRouter,
     Routes,
@@ -58,6 +59,10 @@ function RouteContent() {
 
     return (
         <Routes location={location}>
+            <Route
+                path="/demo/:page?"
+                element={<DemoPage />}
+            />
             {page_routes.map((page_route) => {
                 const Page = page_route.component;
 

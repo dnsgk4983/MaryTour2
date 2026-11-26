@@ -57,3 +57,5 @@
 @use "components/admin_metric";
 @use "components/admin_log";
 @use "pages/admin_dashboard" as admin_dashboard_page;
+@use "components/demo_panel";
+@use "pages/demo" as demo_page;

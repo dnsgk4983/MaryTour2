@@ -1,0 +1,214 @@
+@use "../abstracts/mixins" as *;
+
+.demo_panel {
+    display: flex;
+    flex-direction: column;
+    @include vw(padding, 36);
+    @include vw(gap, 24);
+    @include vw(border-radius, 24);
+    border: 1px solid #c6a36a;
+    background: linear-gradient(
+        145deg,
+        #fff8e9,
+        #f0e2c8
+    );
+    color: #60462e;
+    box-shadow: 0 6px 24px rgba(30, 20, 12, 0.2);
+}
+
+.demo_panel_title {
+    @include vw(font-size, 36);
+    color: #483321;
+    font-weight: 800;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.demo_subtitle {
+    @include vw(font-size, 21);
+    @include vw(letter-spacing, 3);
+    color: #987341;
+    font-weight: 700;
+}
+
+.demo_description {
+    @include vw(font-size, 27);
+    color: #70553f;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+
+.demo_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include vw(padding, 20, 28);
+    @include vw(border-radius, 14);
+    @include vw(font-size, 28);
+    min-height: 44px;
+    border: 1px solid #b48b50;
+    background: linear-gradient(
+        180deg,
+        #f8e3b3,
+        #dfbb7c
+    );
+    color: #483321;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #987341;
+        outline-offset: 3px;
+    }
+}
+
+.demo_button_secondary {
+    background: #fffaf0;
+    color: #70553f;
+}
+
+.demo_menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.demo_menu_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include vw(padding, 24, 0);
+    @include vw(gap, 16);
+    border: 0;
+    border-bottom: 1px solid #d9c4a0;
+    background: transparent;
+    color: #483321;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        @include vw(gap, 6);
+    }
+
+    strong {
+        @include vw(font-size, 30);
+        font-weight: 700;
+    }
+
+    small {
+        @include vw(font-size, 23);
+        color: #80664c;
+    }
+
+    > span {
+        @include vw(font-size, 48);
+        color: #a78147;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.demo_form {
+    display: flex;
+    flex-direction: column;
+    @include vw(gap, 24);
+}
+
+.demo_field {
+    display: flex;
+    flex-direction: column;
+    @include vw(gap, 10);
+
+    span {
+        @include vw(font-size, 25);
+        font-weight: 700;
+    }
+
+    input,
+    select {
+        box-sizing: border-box;
+        min-height: 44px;
+        min-width: 0;
+        @include vw(padding, 20);
+        @include vw(border-radius, 12);
+        @include vw(font-size, 28);
+        border: 1px solid #c6a36a;
+        background: #fffaf0;
+        color: #483321;
+        font-family: inherit;
+    }
+}
+
+.demo_stamp_grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include vw(gap, 12);
+}
+
+.demo_stamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include vw(padding, 18, 8);
+    @include vw(gap, 10);
+    @include vw(border-radius, 14);
+    border: 1px solid #d9c4a0;
+    background: #fffaf0;
+    text-align: center;
+
+    img {
+        @include vw(width, 130);
+        @include vw(height, 130);
+        object-fit: contain;
+    }
+
+    strong,
+    span {
+        @include vw(font-size, 22);
+        word-break: keep-all;
+    }
+}
+
+.demo_status_symbol {
+    display: grid;
+    place-items: center;
+    align-self: center;
+    @include vw(width, 150);
+    @include vw(height, 150);
+    @include vw(font-size, 70);
+    border: 2px solid #c6a36a;
+    border-radius: 50%;
+    color: #987341;
+    font-weight: 800;
+}
+
+.demo_error {
+    @include vw(font-size, 24);
+    color: #a43d30;
+}
+
+.demo_modal_overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10002;
+    display: grid;
+    place-items: center;
+    @include vw(padding, 40);
+    background: rgba(25, 17, 12, 0.72);
+}
+
+.demo_modal {
+    box-sizing: border-box;
+    @include vw(width, 920);
+}
