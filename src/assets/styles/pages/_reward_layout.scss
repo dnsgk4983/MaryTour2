@@ -1,0 +1,335 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.screen.reward_screen {
+    position: relative;
+    display: block;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.reward_scene {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows:
+        minmax(0, 22dvh)
+        minmax(0, 1fr)
+        minmax(0, 27dvh);
+    align-items: stretch;
+    justify-items: center;
+    box-sizing: border-box;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+
+    @include vw(padding, 24, 40, 24);
+    @include vw(gap, 12);
+}
+
+.reward_heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+
+    @include vw(gap, 8);
+
+    h1 {
+        line-height: 1.25;
+
+        @include vw(font-size, 50);
+    }
+}
+
+.reward_ribbon {
+    display: block;
+    width: min(vw(240), 8dvh);
+    max-height: 5dvh;
+    object-fit: contain;
+}
+
+.reward_eyebrow {
+    @include vw(font-size, 22);
+}
+
+.reward_subtitle {
+    @include vw(font-size, 25);
+}
+
+.reward_stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: stretch;
+    align-self: stretch;
+    container-type: size;
+    min-height: 0;
+    overflow: visible;
+}
+
+.reward_card {
+    position: absolute;
+    inset: 0;
+    width: min(vw(650), 34dvh, 68cqh);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    margin: auto;
+    transform-origin: center center;
+    will-change: transform, opacity;
+}
+
+.reward_card_content {
+    justify-content: center;
+
+    @include vw(padding, 80, 65, 100);
+    @include vw(gap, 12);
+}
+
+.reward_card_title {
+    @include vw(font-size, 42);
+}
+
+.reward_card_message {
+    line-height: 1.5;
+
+    @include vw(font-size, 24);
+}
+
+.reward_card_collection {
+    @include vw(margin-top, 8);
+    @include vw(gap, 4);
+
+    strong {
+        @include vw(font-size, 56);
+    }
+
+    span {
+        @include vw(font-size, 21);
+    }
+}
+
+.reward_panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: stretch;
+    align-self: stretch;
+    box-sizing: border-box;
+    min-height: 0;
+    overflow: hidden;
+
+    @include vw(padding, 16, 28);
+    @include vw(gap, 10);
+}
+
+.reward_waiting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+
+    @include vw(gap, 8);
+}
+
+.reward_status {
+    @include vw(padding, 0);
+    @include vw(gap, 6);
+
+    small {
+        @include vw(font-size, 25);
+    }
+}
+
+.reward_status_icon {
+    display: none;
+}
+
+.reward_status_title {
+    line-height: 1.25;
+
+    @include vw(font-size, 34);
+}
+
+.reward_message {
+    line-height: 1.4;
+
+    @include vw(font-size, 27);
+}
+
+.reward_notice {
+    line-height: 1.4;
+
+    @include vw(font-size, 21);
+}
+
+.reward_action {
+    flex-shrink: 0;
+    min-height: 44px;
+
+    @include vw(font-size, 29);
+    @include vw(padding, 14, 20);
+}
+
+.reward_secondary {
+    min-height: 36px;
+
+    @include vw(font-size, 24);
+    @include vw(padding, 4, 20);
+}
+
+.reward_preview_label {
+    flex-shrink: 0;
+
+    @include vw(font-size, 15);
+}
+
+.reward_opening {
+    .reward_envelope_button {
+        pointer-events: none;
+    }
+}
+
+.reward_opened {
+    .reward_envelope_button {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@media (max-height: 780px) {
+    .reward_scene {
+        grid-template-rows:
+            minmax(0, 19dvh)
+            minmax(0, 1fr)
+            minmax(0, 29dvh);
+
+        @include vw(padding, 16, 32, 16);
+        @include vw(gap, 8);
+    }
+
+    .reward_heading {
+        @include vw(gap, 4);
+
+        h1 {
+            @include vw(font-size, 44);
+        }
+    }
+
+    .reward_ribbon {
+        max-height: 4dvh;
+    }
+
+    .reward_card_content {
+        @include vw(padding, 60, 48, 80);
+        @include vw(gap, 8);
+    }
+
+    .reward_card_title {
+        @include vw(font-size, 36);
+    }
+
+    .reward_card_message {
+        @include vw(font-size, 22);
+    }
+
+    .reward_card_collection {
+        strong {
+            @include vw(font-size, 48);
+        }
+
+        span {
+            @include vw(font-size, 19);
+        }
+    }
+
+    .reward_panel {
+        @include vw(padding, 12, 20);
+        @include vw(gap, 8);
+    }
+
+    .reward_status_title {
+        @include vw(font-size, 30);
+    }
+}
+
+@media (max-height: 650px) {
+    .reward_scene {
+        grid-template-rows:
+            minmax(0, 17dvh)
+            minmax(0, 1fr)
+            minmax(0, 34dvh);
+    }
+
+    .reward_ribbon,
+    .reward_subtitle,
+    .reward_card_message {
+        display: none;
+    }
+
+    .reward_card_content {
+        @include vw(padding, 40, 30, 55);
+        @include vw(gap, 6);
+    }
+
+    .reward_card_title {
+        @include vw(font-size, 30);
+    }
+
+    .reward_card_collection {
+        strong {
+            @include vw(font-size, 40);
+        }
+    }
+
+    .reward_notice {
+        @include vw(font-size, 18);
+    }
+
+    .reward_panel {
+        @include vw(gap, 6);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reward_card {
+        will-change: auto;
+    }
+}
+
+
+.reward_scene {
+    grid-template-columns: minmax(0, 1fr);
+
+    > .reward_heading {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: stretch;
+        align-self: stretch;
+        min-width: 0;
+    }
+
+    > .reward_stage {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: stretch;
+        align-self: stretch;
+        min-width: 0;
+    }
+
+    > .reward_panel {
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: stretch;
+        align-self: stretch;
+        min-width: 0;
+    }
+}

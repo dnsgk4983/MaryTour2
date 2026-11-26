@@ -21,3 +21,87 @@
         color: $color_text;
     }
 }
+
+.btn_ornament {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #bd9658;
+    background: linear-gradient(
+        180deg,
+        #fff9e9,
+        #f3dba3
+    );
+    color: #70553f;
+    font-weight: 700;
+    box-shadow:
+        0 3px 12px rgba(35, 23, 12, 0.25),
+        inset 0 0 8px rgba(255, 255, 255, 0.8);
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+    @include vw(min-width, 620);
+    @include vw(min-height, 110);
+    @include vw(border-width, 3);
+    @include vw(border-radius, 55);
+    @include vw(letter-spacing, 2);
+
+    &::before {
+        position: absolute;
+        inset: 4px;
+        border: 1px solid rgba(189, 150, 88, 0.6);
+        border-radius: inherit;
+        pointer-events: none;
+        content: "";
+    }
+
+    &:not(:disabled):active {
+        transform: scale(0.97);
+        filter: brightness(0.96);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #fff9e9;
+        outline-offset: 4px;
+    }
+}
+
+.btn_shimmer {
+    &::after {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.85),
+            transparent
+        );
+        transform: skewX(-22deg);
+        animation: button_shimmer 5s ease-in-out infinite;
+        pointer-events: none;
+        content: "";
+
+        @include vw(left, -240);
+        @include vw(width, 180);
+    }
+}
+
+@media (hover: hover) {
+    .btn_ornament:not(:disabled):hover {
+        filter: brightness(1.08);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn_ornament {
+        transition: none;
+    }
+
+    .btn_shimmer::after {
+        animation: none;
+    }
+}

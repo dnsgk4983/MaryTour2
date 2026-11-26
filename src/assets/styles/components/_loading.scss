@@ -1,0 +1,133 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.loading {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    background-color: $color_secondary;
+
+    @include vw(padding, 48);
+}
+
+.loading_background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.loading_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 42);
+}
+
+.loading_object {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vw(width, 660);
+    @include vw(height, 500);
+}
+
+.loading_button {
+    position: relative;
+    z-index: 2;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+
+    @include vw(width, 420);
+}
+
+.loading_thread {
+    position: absolute;
+    z-index: 1;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+
+    @include vw(width, 660);
+    @include vw(bottom, 0);
+    @include vw(left, 0);
+}
+
+.loading_status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 18);
+}
+
+.loading_text {
+    color: $color_text;
+    font-weight: 600;
+    text-align: center;
+
+    @include vw(font-size, 30);
+    @include vw(letter-spacing, 3);
+}
+
+.loading_progress {
+    appearance: none;
+    border: none;
+    overflow: hidden;
+    background-color: #e7ddca;
+
+    @include vw(width, 540);
+    @include vw(height, 10);
+    @include vw(border-radius, 20);
+
+    &::-webkit-progress-bar {
+        background-color: #e7ddca;
+    }
+
+    &::-webkit-progress-value {
+        background-color: $color_gold;
+        transition: width 0.2s ease;
+    }
+
+    &::-moz-progress-bar {
+        background-color: $color_gold;
+    }
+}
+
+.loading_value {
+    color: $color_text;
+    font-variant-numeric: tabular-nums;
+
+    @include vw(font-size, 24);
+    @include vw(letter-spacing, 2);
+}
+
+.loading_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 20);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading_progress::-webkit-progress-value {
+        transition: none;
+    }
+}

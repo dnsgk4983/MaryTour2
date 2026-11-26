@@ -1,0 +1,182 @@
+@use "../abstracts/mixins" as *;
+
+.btn_reflection {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 230, 0.28),
+        transparent 62%
+    );
+}
+
+.btn_image_content {
+    z-index: 1;
+}
+
+.btn_image.motion_enabled:not(:disabled) {
+    transition:
+        transform 0.18s ease,
+        filter 0.25s ease;
+
+    &:active {
+        transform: scale(0.96);
+
+        .btn_reflection {
+            opacity: 1;
+        }
+    }
+}
+
+.btn_image.motion_enabled.btn_primary:not(:disabled) {
+    .btn_reflection {
+        animation: button_reflection 7s ease-in-out infinite;
+    }
+}
+
+.collection_reflection {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at 50% 16%,
+        rgba(255, 237, 180, 0.55),
+        rgba(255, 237, 180, 0.12) 15%,
+        transparent 32%
+    );
+}
+
+.stamp_collection.motion_enabled {
+    .collection_case:not(:disabled) {
+        .collection_reflection {
+            animation: collection_reflection 6s ease-in-out infinite;
+        }
+    }
+
+    .stamp_slot_collected {
+        .stamp_image {
+            animation: stamp_glow 3.5s ease-in-out infinite;
+        }
+    }
+
+    .collection_step.collected {
+        animation: collection_progress 3.5s ease-in-out infinite;
+    }
+}
+
+.modal.motion_enabled[open] {
+    &::backdrop {
+        animation: modal_backdrop 0.3s ease-out both;
+    }
+}
+
+@media (hover: hover) {
+    .btn_image.motion_enabled:not(:disabled):hover {
+        .btn_reflection {
+            opacity: 0.8;
+        }
+    }
+
+    .stamp_collection.motion_enabled {
+        .collection_case:not(:disabled):hover {
+            filter: brightness(1.06);
+        }
+    }
+}
+
+@keyframes button_reflection {
+    0%,
+    70%,
+    100% {
+        opacity: 0;
+    }
+
+    82% {
+        opacity: 0.75;
+    }
+}
+
+@keyframes collection_reflection {
+    0%,
+    65%,
+    100% {
+        opacity: 0;
+    }
+
+    78% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes stamp_glow {
+    0%,
+    100% {
+        filter: drop-shadow(
+            0 2px 4px rgba(198, 163, 106, 0.5)
+        );
+    }
+
+    50% {
+        filter: drop-shadow(
+            0 2px 9px rgba(255, 220, 135, 0.85)
+        );
+    }
+}
+
+@keyframes collection_progress {
+    0%,
+    100% {
+        box-shadow: 0 0 3px rgba(245, 217, 130, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 8px rgba(245, 217, 130, 0.7);
+    }
+}
+
+@keyframes modal_backdrop {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.motion_disabled {
+    .btn_reflection,
+    .collection_reflection {
+        display: none;
+    }
+
+    .stamp_image,
+    .collection_step {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .motion_enabled {
+        .btn_reflection,
+        .collection_reflection,
+        .stamp_image,
+        .collection_step {
+            animation: none;
+        }
+    }
+
+    .btn_image.motion_enabled {
+        transition: none;
+    }
+
+    .modal.motion_enabled[open]::backdrop {
+        animation: none;
+    }
+}

@@ -1,0 +1,333 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.reward_envelope_button {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: block;
+    width: min(vw(900), 48dvh);
+    height: min(vw(680), 36dvh);
+    margin: auto;
+    border: none;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+
+    &:disabled {
+        opacity: 1;
+        cursor: default;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #e5c58d;
+
+        @include vw(border-radius, 24);
+    }
+}
+
+.reward_sealed_layer,
+.reward_opened_layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        display: block;
+        width: inherit;
+        height: inherit;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        pointer-events: none;
+    }
+}
+
+.reward_opened_layer {
+    opacity: 0;
+}
+
+.reward_envelope_fallback {
+    position: relative;
+    display: block;
+    width: min(vw(760), 40dvh);
+    height: min(vw(460), 25dvh);
+    border-style: solid;
+    border-color: #c6a36a;
+    background: linear-gradient(
+        145deg,
+        #fff1d4,
+        #dfc49a
+    );
+    box-shadow: 0 12px 28px rgba(35, 22, 12, 0.3);
+
+    @include vw(border-width, 3);
+    @include vw(border-radius, 16);
+
+    &::before {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            #f7e8ca,
+            #d4b481
+        );
+        clip-path: polygon(
+            0 0,
+            100% 0,
+            50% 65%
+        );
+        content: "";
+    }
+}
+
+.reward_envelope_fallback_open {
+    &::before {
+        transform: rotateX(180deg);
+        transform-origin: center top;
+    }
+}
+
+.reward_seal {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-style: solid;
+    border-color: #f5dda5;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #e5c58d,
+        #ae874c
+    );
+
+    @include vw(width, 120);
+    @include vw(height, 120);
+    @include vw(border-width, 4);
+
+    &::after {
+        color: #fff1c8;
+        content: "✦";
+
+        @include vw(font-size, 60);
+    }
+}
+
+.reward_card {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(vw(620), 32dvh);
+    height: min(vw(820), 43dvh);
+    margin: auto;
+    opacity: 0;
+    pointer-events: none;
+
+    img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(
+            0 8px 18px rgba(255, 220, 140, 0.35)
+        );
+    }
+}
+
+.reward_card_fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex: 1;
+    border-style: double;
+    border-color: #c6a36a;
+    background: radial-gradient(
+        ellipse at center,
+        #fff9e9,
+        #e9d4ad
+    );
+    color: #927653;
+
+    @include vw(border-width, 10);
+    @include vw(border-radius, 20);
+    @include vw(gap, 24);
+
+    span {
+        color: #c6a36a;
+
+        @include vw(font-size, 130);
+    }
+
+    strong {
+        @include vw(font-size, 32);
+    }
+
+    small {
+        @include vw(font-size, 18);
+        @include vw(letter-spacing, 2);
+    }
+}
+
+.reward_glow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: min(vw(1080), 65dvh);
+    height: min(vw(1080), 65dvh);
+    margin: auto;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 236, 182, 0.85),
+        rgba(240, 189, 84, 0.25) 45%,
+        transparent 72%
+    );
+    opacity: 0;
+    pointer-events: none;
+}
+
+.reward_sparkle {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    width: calc(vw(1) * var(--sparkle_size));
+    height: calc(vw(1) * var(--sparkle_size));
+    margin: auto;
+    background-color: #fff1c4;
+    clip-path: polygon(
+        50% 0,
+        60% 40%,
+        100% 50%,
+        60% 60%,
+        50% 100%,
+        40% 60%,
+        0 50%,
+        40% 40%
+    );
+    translate:
+        calc(vw(1) * var(--sparkle_x))
+        calc(vw(1) * var(--sparkle_y));
+    opacity: 0;
+    pointer-events: none;
+}
+
+.reward_opened {
+    .reward_sealed_layer {
+        opacity: 0;
+    }
+
+    .reward_opened_layer,
+    .reward_card,
+    .reward_glow,
+    .reward_sparkle {
+        opacity: 1;
+    }
+
+    .reward_envelope_button {
+        transform: translateY(vw(65)) scale(0.85);
+    }
+}
+
+.reward_waiting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+
+    @include vw(gap, 16);
+}
+
+.reward_status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    border-style: solid;
+    border-color: #dcc49a;
+    background-color: rgba(255, 250, 235, 0.55);
+
+    @include vw(padding, 22, 20);
+    @include vw(gap, 8);
+    @include vw(border-width, 2);
+    @include vw(border-radius, 18);
+
+    small {
+        color: #927653;
+        line-height: 1.5;
+        word-break: keep-all;
+
+        @include vw(font-size, 25);
+    }
+}
+
+.reward_status_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b18a48;
+
+    @include vw(width, 48);
+    @include vw(height, 48);
+
+    svg {
+        @include vw(width, 44);
+        @include vw(height, 44);
+    }
+}
+
+.reward_status_title {
+    color: #a78147;
+    font-weight: 700;
+
+    @include vw(font-size, 34);
+}
+
+.reward_notice {
+    color: #927653;
+    line-height: 1.4;
+
+    @include vw(font-size, 21);
+}
+
+.reward_scene.motion_disabled {
+    .reward_sparkle {
+        display: none;
+    }
+}
+
+@media (max-height: 650px) {
+    .reward_card {
+        width: min(vw(500), 27dvh);
+        height: min(vw(680), 35dvh);
+    }
+
+    .reward_envelope_button {
+        width: min(vw(740), 40dvh);
+        height: min(vw(560), 29dvh);
+    }
+
+    .reward_waiting {
+        @include vw(gap, 8);
+    }
+
+    .reward_status {
+        @include vw(padding, 12, 16);
+        @include vw(gap, 4);
+    }
+
+    .reward_status_icon {
+        display: none;
+    }
+
+    .reward_status_title {
+        @include vw(font-size, 28);
+    }
+}

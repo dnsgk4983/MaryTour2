@@ -1,0 +1,143 @@
+@use "../abstracts/mixins" as *;
+
+.gps_reward_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(25, 17, 12, 0.88);
+}
+
+.gps_reward_panel {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: #c7a36d;
+    background: radial-gradient(
+        ellipse at center,
+        #fff9e7,
+        #f0dfbd
+    );
+    color: #705039;
+    text-align: center;
+
+    @include vw(width, 900);
+    @include vw(padding, 100, 40, 48);
+    @include vw(gap, 20);
+    @include vw(border-width, 3);
+    @include vw(border-radius, 30);
+
+    h2 {
+        font-weight: 800;
+
+        @include vw(font-size, 56);
+    }
+}
+
+.gps_reward_ribbon {
+    position: absolute;
+    height: auto;
+    margin: auto;
+    pointer-events: none;
+
+    @include vw(top, -48);
+    @include vw(left, 0);
+    @include vw(right, 0);
+    @include vw(width, 300);
+}
+
+.gps_reward_glow {
+    position: absolute;
+    z-index: -1;
+    margin: auto;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #ffe49e,
+        transparent 70%
+    );
+    pointer-events: none;
+
+    @include vw(top, 100);
+    @include vw(left, 0);
+    @include vw(right, 0);
+    @include vw(width, 680);
+    @include vw(height, 680);
+}
+
+.gps_reward_button {
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+
+    @include vw(width, 480);
+    @include vw(height, 480);
+}
+
+.gps_reward_eyebrow {
+    color: #aa8957;
+    font-weight: 700;
+
+    @include vw(font-size, 24);
+    @include vw(letter-spacing, 5);
+}
+
+.gps_reward_station {
+    font-weight: 700;
+
+    @include vw(font-size, 38);
+}
+
+.gps_reward_details {
+    color: #927653;
+
+    @include vw(font-size, 24);
+}
+
+.gps_reward_count {
+    color: #a77d3d;
+    font-weight: 800;
+
+    @include vw(font-size, 52);
+}
+
+.gps_reward_confirm {
+    min-height: 44px;
+    border-style: solid;
+    border-color: #c7a36d;
+    background: linear-gradient(
+        180deg,
+        #fff6dc,
+        #ead09a
+    );
+    color: #705039;
+    font-weight: 700;
+
+    @include vw(width, 720);
+    @include vw(padding, 24, 20);
+    @include vw(border-width, 2);
+    @include vw(border-radius, 50);
+    @include vw(font-size, 32);
+}
+
+@media (max-height: 650px) {
+    .gps_reward_panel {
+        @include vw(padding, 65, 32, 28);
+        @include vw(gap, 12);
+    }
+
+    .gps_reward_button {
+        @include vw(width, 300);
+        @include vw(height, 300);
+    }
+
+    .gps_reward_glow {
+        @include vw(width, 420);
+        @include vw(height, 420);
+    }
+}

@@ -1,0 +1,39 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_feedback_slot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 44px;
+}
+
+.admin_feedback {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    word-break: keep-all;
+
+    svg {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.admin_feedback_error {
+    border-color: #e6b7a9;
+    background-color: $admin_error_background;
+    color: $admin_error;
+}
+
+.admin_feedback_success {
+    border-color: #b8cdb0;
+    background-color: $admin_success_background;
+    color: $admin_success;
+}

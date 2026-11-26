@@ -1,0 +1,12 @@
+@use "../abstracts/mixins" as *;
+
+.screen.discovery_preview {
+    position: relative;
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+
+    @include vw(padding, 0);
+    @include vw(gap, 0);
+}

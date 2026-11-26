@@ -1,0 +1,285 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.screen.scanner {
+    position: relative;
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+
+    @include vw(padding, 0);
+    @include vw(gap, 0);
+}
+
+.scanner_scene {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    background-color: #493c33;
+
+    @include vw(padding, 24, 0);
+    @include vw(gap, 24);
+}
+
+.scanner_background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55) saturate(0.75);
+    pointer-events: none;
+}
+
+.scanner_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        rgba(30, 20, 12, 0.15),
+        rgba(30, 20, 12, 0.5)
+    );
+    pointer-events: none;
+}
+
+.scanner_heading {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include vw(width, 1080);
+    @include vw(gap, 8);
+    @include vw(padding, 8, 120);
+
+    .btn_icon_round {
+        position: absolute;
+
+        @include vw(top, 0);
+        @include vw(left, 30);
+    }
+
+    .scene_subtitle {
+        color: #e8c58c;
+        font-weight: 600;
+
+        @include vw(font-size, 22);
+        @include vw(letter-spacing, 4);
+    }
+
+    .scene_title {
+        color: #fff1d5;
+        font-weight: 700;
+
+        @include vw(font-size, 50);
+    }
+}
+
+.scanner_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+
+    @include vw(gap, 24);
+    @include vw(padding-top, 36);
+
+    .ornament_panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 0;
+
+        @include vw(width, 960);
+        @include vw(padding, 64, 40, 24);
+        @include vw(gap, 16);
+    }
+
+    .ornament_heading {
+        flex-shrink: 0;
+
+        @include vw(gap, 8);
+    }
+
+    .ornament_title {
+        @include vw(font-size, 34);
+    }
+
+    .ornament_subtitle {
+        @include vw(font-size, 20);
+    }
+
+    .ornament_ribbon {
+        @include vw(width, 260);
+        @include vw(top, -44);
+    }
+
+    .scanner_frame {
+        flex-shrink: 0;
+        width: min(
+            vw(760),
+            40dvh
+        );
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .scanner_guide {
+        width: min(
+            vw(540),
+            28dvh
+        );
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    .scanner_line {
+        animation-name: scanner_adaptive_sweep;
+    }
+
+    .scanner_message {
+        flex-shrink: 0;
+
+        @include vw(min-height, 64);
+        @include vw(font-size, 26);
+    }
+}
+
+.scanner_actions {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .btn_image {
+        min-height: 44px;
+
+        @include vw(width, 680);
+        @include vw(height, 140);
+        @include vw(font-size, 32);
+    }
+}
+
+.scanner_footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    color: #e2cba6;
+    text-align: center;
+
+    @include vw(gap, 12);
+    @include vw(font-size, 23);
+}
+
+.scanner_footer_line {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #c5a36e,
+        transparent
+    );
+
+    @include vw(width, 260);
+    @include vw(height, 2);
+}
+
+@keyframes scanner_adaptive_sweep {
+    0%,
+    100% {
+        top: 0;
+        opacity: 0.4;
+    }
+
+    50% {
+        top: calc(
+            min(vw(540), 28dvh) - vw(3)
+        );
+        opacity: 1;
+    }
+}
+
+@media (max-height: 750px) {
+    .scanner_scene {
+        @include vw(padding, 16, 0);
+        @include vw(gap, 12);
+    }
+
+    .scanner_content {
+        @include vw(gap, 12);
+        @include vw(padding-top, 24);
+
+        .ornament_panel {
+            @include vw(padding, 48, 32, 16);
+            @include vw(gap, 10);
+        }
+
+        .scanner_frame {
+            width: min(
+                vw(680),
+                34dvh
+            );
+        }
+
+        .scanner_guide {
+            width: min(
+                vw(480),
+                24dvh
+            );
+        }
+
+        .scanner_line {
+            display: none;
+        }
+
+        .scanner_message {
+            @include vw(min-height, 52);
+            @include vw(font-size, 24);
+        }
+    }
+
+    .scanner_actions {
+        .btn_image {
+            @include vw(height, 120);
+        }
+    }
+
+    .scanner_footer {
+        @include vw(gap, 8);
+        @include vw(font-size, 21);
+    }
+}
+
+@media (max-height: 600px) {
+    .scanner_footer {
+        display: none;
+    }
+
+    .scanner_content {
+        .scanner_frame {
+            width: min(
+                vw(580),
+                28dvh
+            );
+        }
+
+        .scanner_guide {
+            width: min(
+                vw(400),
+                20dvh
+            );
+        }
+    }
+}

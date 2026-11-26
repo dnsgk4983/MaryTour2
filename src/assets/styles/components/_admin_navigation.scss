@@ -1,0 +1,52 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_navigation {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 5px;
+    gap: 6px;
+    border: 1px solid rgba(198, 163, 106, 0.55);
+    border-radius: 11px;
+    background-color: rgba(49, 33, 21, 0.85);
+}
+
+.admin_navigation_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background-color: transparent;
+    color: #ead7b5;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 248, 233, 0.08);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #f4dba7;
+        outline-offset: 2px;
+    }
+}
+
+.admin_navigation_active {
+    border-color: #c6a36a;
+    background: linear-gradient(
+        180deg,
+        #f8e3b3,
+        #dfbb7c
+    );
+    color: $admin_text;
+
+    &:hover {
+        background-color: #dfbb7c;
+    }
+}

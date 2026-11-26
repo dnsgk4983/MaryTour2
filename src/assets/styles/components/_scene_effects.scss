@@ -1,0 +1,41 @@
+@use "../abstracts/mixins" as *;
+
+.scene_effects {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
+.effect_sunlight {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at 12% 32%,
+        rgba(255, 222, 165, 0.22),
+        rgba(255, 222, 165, 0.06) 38%,
+        transparent 65%
+    );
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.effect_dust_light {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at 32% 42%,
+        rgba(255, 235, 193, 0.08),
+        transparent 48%
+    );
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scene_effects {
+        display: none;
+    }
+}

@@ -4,5 +4,56 @@
 
 @use "layouts/container";
 @use "layouts/screen";
+@use "layouts/scene";
 
 @use "components/button";
+@use "components/title";
+@use "components/loading";
+@use "components/particles";
+@use "components/collection";
+@use "components/scene_ui";
+@use "components/image_button";
+@use "components/modal";
+@use "components/dialogue";
+@use "components/scene_effects";
+@use "components/collection_detail";
+@use "components/ornament_panel";
+@use "components/icon_button";
+@use "components/scanner" as scanner_component;
+
+@use "utilities/animation";
+
+@use "pages/splash";
+@use "pages/home";
+@use "pages/scanner" as scanner_page;
+
+@use "utilities/interaction";
+@use "components/gps_station";
+@use "components/gps_reward";
+@use "pages/gps_test";
+@use "components/button_discovery";
+@use "pages/discovery" as discovery_page;
+@use "components/journey_complete" as journey_complete_component;
+@use "pages/journey_complete" as journey_complete_page;
+@use "components/reward_reveal";
+@use "pages/reward" as reward_page;
+
+@use "components/reward_readability";
+
+@use "pages/reward_layout";
+@use "components/ending_collection";
+@use "components/ending_panel";
+@use "pages/ending" as ending_page;
+@use "components/admin_field";
+@use "components/admin_button";
+@use "components/admin_feedback";
+@use "pages/admin_login" as admin_login_page;
+@use "components/admin_card";
+@use "components/admin_inventory";
+@use "components/admin_participant";
+@use "components/admin_dialog";
+@use "pages/admin_workspace" as admin_workspace_page;
+@use "components/admin_navigation";
+@use "components/admin_metric";
+@use "components/admin_log";
+@use "pages/admin_dashboard" as admin_dashboard_page;

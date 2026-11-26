@@ -1,0 +1,100 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 8px;
+}
+
+.admin_field_label {
+    color: $admin_text;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.admin_field_control {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 50px;
+    padding: 0 12px;
+    gap: 10px;
+    border: 1px solid $admin_border;
+    border-radius: 8px;
+    background-color: #fffcf5;
+    transition: border-color 0.18s ease;
+    transition-property: border-color, box-shadow;
+
+    &:focus-within {
+        border-color: $admin_focus;
+        box-shadow: 0 0 0 3px rgba(180, 139, 80, 0.12);
+    }
+
+    input {
+        flex: 1;
+        box-sizing: border-box;
+        min-width: 0;
+        height: 48px;
+        padding: 0;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: $admin_text;
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 1.5;
+
+        &::placeholder {
+            color: #947b60;
+            font-size: 13px;
+        }
+
+        &:disabled {
+            opacity: 0.65;
+        }
+    }
+}
+
+.admin_field_icon {
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+    color: $admin_primary;
+}
+
+.admin_field_toggle {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    color: $admin_muted;
+    cursor: pointer;
+
+    svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $admin_focus;
+    }
+}
+
+.admin_field_invalid {
+    border-color: $admin_error;
+}
+
+.admin_field_error {
+    color: $admin_error;
+    font-size: 12px;
+    line-height: 1.5;
+    word-break: keep-all;
+}

@@ -1,0 +1,43 @@
+@use "../abstracts/mixins" as *;
+
+.btn_icon_round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: rgba(255, 226, 177, 0.6);
+    border-radius: 50%;
+    background-color: rgba(51, 34, 21, 0.48);
+    color: #fff1d5;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+
+    @include vw(width, 88);
+    @include vw(height, 88);
+    @include vw(border-width, 2);
+
+    min-width: 44px;
+    min-height: 44px;
+
+    svg {
+        @include vw(width, 44);
+        @include vw(height, 44);
+    }
+
+    &:not(:disabled):active {
+        transform: scale(0.94);
+        background-color: rgba(130, 96, 52, 0.7);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #f5d982;
+        outline-offset: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn_icon_round {
+        transition: none;
+    }
+}

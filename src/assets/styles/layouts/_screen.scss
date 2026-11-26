@@ -1,4 +1,20 @@
+@use "../abstracts/mixins" as *;
+
 .screen {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    @include vw(padding, 48);
+    @include vw(gap, 32);
+}
+
+.page_transition {
+    position: relative;
+    min-height: 100vh;
     min-height: 100dvh;
 }

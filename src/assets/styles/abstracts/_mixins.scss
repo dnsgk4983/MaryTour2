@@ -1,13 +1,16 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:list";
 @use "functions" as *;
 
 @mixin vw($property, $values...) {
     $result: ();
 
     @each $value in $values {
-        @if type-of($value) == number and unitless($value) {
-            $result: append($result, vw($value), space);
+        @if meta.type-of($value) == number and math.is-unitless($value) {
+            $result: list.append($result, vw($value), space);
         } @else {
-            $result: append($result, $value, space);
+            $result: list.append($result, $value, space);
         }
     }
 

@@ -1,0 +1,68 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_dialog {
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+    width: min(420px, calc(100vw - 36px));
+    max-height: calc(100dvh - 36px);
+    margin: auto;
+    padding: 0;
+    overflow-y: auto;
+    border: 2px solid #c6a36a;
+    border-radius: 16px;
+    background-color: #fff8e9;
+    color: $admin_text;
+    box-shadow: 0 20px 60px rgba(30, 18, 10, 0.35);
+
+    &::backdrop {
+        background-color: rgba(24, 16, 10, 0.72);
+    }
+}
+
+.admin_dialog_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 24px;
+    gap: 18px;
+
+    h2 {
+        font-size: 21px;
+        font-weight: 800;
+        line-height: 1.4;
+        text-align: center;
+        word-break: keep-all;
+    }
+}
+
+.admin_dialog_icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #c6a36a;
+    border-radius: 50%;
+    background-color: #f1e3c5;
+    color: $admin_primary;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.admin_dialog_description {
+    color: $admin_muted;
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+    word-break: keep-all;
+}
+
+.admin_dialog_actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-self: stretch;
+    gap: 10px;
+}

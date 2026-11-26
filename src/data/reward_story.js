@@ -1,0 +1,20 @@
+export const reward_story = {
+    eyebrow: 'SPECIAL GIFT',
+    title: '메리가 준비한 선물',
+    subtitle: '메리의 잃어버린 단추',
+    sealed_message: '당신을 위해 준비한 선물을 열어보세요.',
+    opening_message: '선물을 열고 있어요...',
+    opened_title: '당신을 위한 선물',
+    opened_message: '메리와 함께한 여정이 완성되었어요.',
+    waiting_title: '현장 수령 대기',
+    waiting_message: '생일카페에서 운영진에게 문의해주세요.',
+    open_button: '봉투 열기',
+    home_button: '인형공방으로 돌아가기',
+    card_eyebrow: 'MARY’S BUTTON TOUR',
+    card_title: '여정의 증표',
+    card_subtitle: 'BIRTHDAY JOURNEY',
+    card_message: '잃어버린 단추를 모두 찾아주셔서 감사해요.',
+    card_complete: '모든 단추 수집 완료',
+    card_count: '3 / 3',
+    card_footer: 'WITH LOVE, MARY'
+};

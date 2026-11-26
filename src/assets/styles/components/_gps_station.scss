@@ -1,0 +1,151 @@
+@use "../abstracts/mixins" as *;
+
+.gps_station_list {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+
+    @include vw(gap, 16);
+}
+
+.gps_station {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    border-style: solid;
+    border-color: #d3bd94;
+    background: linear-gradient(
+        135deg,
+        #f8ecd5,
+        #eee0c4
+    );
+    color: #705039;
+    text-align: left;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease;
+
+    @include vw(min-height, 160);
+    @include vw(padding, 18, 24);
+    @include vw(gap, 24);
+    @include vw(border-width, 2);
+    @include vw(border-radius, 20);
+
+    &:disabled {
+        opacity: 1;
+        cursor: default;
+    }
+
+    &:not(:disabled):active {
+        transform: scale(0.98);
+        border-color: #ad874d;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #ad874d;
+        outline-offset: 2px;
+    }
+}
+
+.gps_station_image {
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+    pointer-events: none;
+
+    @include vw(width, 112);
+    @include vw(height, 112);
+}
+
+.gps_station_info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+
+    @include vw(gap, 4);
+
+    strong {
+        color: #705039;
+        font-weight: 700;
+        word-break: keep-all;
+
+        @include vw(font-size, 34);
+    }
+
+    small {
+        color: #a38964;
+        font-weight: 500;
+
+        @include vw(font-size, 24);
+    }
+}
+
+.gps_station_indicator {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: #ad8a54;
+
+    @include vw(width, 46);
+    @include vw(height, 46);
+
+    svg {
+        @include vw(width, 38);
+        @include vw(height, 38);
+    }
+}
+
+.gps_station_collected {
+    border-color: #c09c5b;
+    background: linear-gradient(
+        135deg,
+        #fff6dc,
+        #ecd6a3
+    );
+
+    .gps_station_info {
+        small {
+            color: #9a7339;
+            font-weight: 700;
+        }
+    }
+}
+
+.gps_station_pending {
+    border-color: #bd9655;
+}
+
+.gps_spinner {
+    display: block;
+    border-style: solid;
+    border-color: #dfcdb0;
+    border-top-color: #ad874d;
+    border-radius: 50%;
+    animation: gps_spin 0.8s linear infinite;
+
+    @include vw(width, 40);
+    @include vw(height, 40);
+    @include vw(border-width, 4);
+
+    &.motion_disabled {
+        animation: none;
+    }
+}
+
+@keyframes gps_spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gps_station {
+        transition: none;
+    }
+
+    .gps_spinner {
+        animation: none;
+    }
+}

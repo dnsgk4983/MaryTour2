@@ -1,0 +1,31 @@
+@use "../abstracts/mixins" as *;
+
+@keyframes loading_rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes button_shimmer {
+    0% {
+        @include vw(left, -240);
+    }
+
+    28% {
+        @include vw(left, 780);
+    }
+
+    100% {
+        @include vw(left, 780);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading_spinner {
+        animation: none;
+    }
+}

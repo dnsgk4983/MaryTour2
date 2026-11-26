@@ -1,0 +1,296 @@
+@use "../abstracts/mixins" as *;
+
+.collection_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 30);
+}
+
+.collection_description {
+    color: #927653;
+    text-align: center;
+    word-break: keep-all;
+
+    @include vw(font-size, 28);
+}
+
+.collection_divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vw(width, 740);
+    @include vw(height, 12);
+
+    &::before,
+    &::after {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #c5a36e
+        );
+        content: "";
+    }
+
+    &::after {
+        transform: rotate(180deg);
+    }
+
+    span {
+        flex-shrink: 0;
+        transform: rotate(45deg);
+        background-color: #c5a36e;
+
+        @include vw(width, 10);
+        @include vw(height, 10);
+        @include vw(margin, 0, 20);
+    }
+}
+
+.stamp_card_list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-self: stretch;
+
+    @include vw(gap, 14);
+}
+
+.stamp_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    border-style: solid;
+    border-color: #d9c5a4;
+    background: linear-gradient(
+        180deg,
+        #f6ead4,
+        #ecdec4
+    );
+
+    @include vw(min-height, 340);
+    @include vw(padding, 22, 6, 24);
+    @include vw(border-width, 2);
+    @include vw(border-radius, 20);
+    @include vw(gap, 12);
+}
+
+.stamp_card_number {
+    color: #b19a77;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+
+    @include vw(font-size, 22);
+    @include vw(letter-spacing, 2);
+}
+
+.stamp_card_slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: dashed;
+    border-color: #c9b18a;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #f8eedb,
+        #e5d5b7
+    );
+
+    @include vw(width, 180);
+    @include vw(height, 180);
+    @include vw(border-width, 2);
+}
+
+.stamp_card_image {
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+
+    @include vw(width, 160);
+    @include vw(height, 160);
+}
+
+.stamp_card_empty {
+    .stamp_card_image {
+        opacity: 0.72;
+        filter: saturate(0.65);
+    }
+}
+
+.stamp_card_name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    min-width: 0;
+    color: #70533d;
+    font-weight: 700;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
+
+    @include vw(min-height, 68);
+    @include vw(font-size, 29);
+}
+
+.stamp_card_state {
+    color: #a38a69;
+    font-weight: 500;
+
+    @include vw(font-size, 25);
+}
+
+.stamp_card_collected {
+    border-color: #c8a05b;
+    background: linear-gradient(
+        180deg,
+        #fff4d9,
+        #f0ddb1
+    );
+
+    .stamp_card_slot {
+        border-style: solid;
+        border-color: #d1ab64;
+        background: radial-gradient(
+            circle,
+            #fff9e7,
+            #ecd39b
+        );
+    }
+
+    .stamp_card_state {
+        color: #99712f;
+        font-weight: 700;
+    }
+}
+
+.stamp_card_check {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: #fff5d9;
+    border-radius: 50%;
+    background-color: #b18a48;
+    color: #fff9eb;
+
+    @include vw(right, -5);
+    @include vw(bottom, -5);
+    @include vw(width, 46);
+    @include vw(height, 46);
+    @include vw(border-width, 3);
+
+    svg {
+        @include vw(width, 28);
+        @include vw(height, 28);
+    }
+}
+
+.collection_detail_progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(margin-top, 12);
+    @include vw(gap, 18);
+}
+
+.collection_detail_count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8e704a;
+
+    @include vw(gap, 24);
+
+    > span {
+        font-weight: 600;
+
+        @include vw(font-size, 29);
+    }
+
+    strong {
+        color: #9b733b;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+
+        @include vw(font-size, 48);
+    }
+
+    small {
+        color: #b39a76;
+        font-weight: 500;
+
+        @include vw(margin-left, 8);
+        @include vw(font-size, 30);
+    }
+}
+
+.collection_progress_track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vw(gap, 10);
+}
+
+.collection_progress_segment {
+    display: block;
+    background-color: #dfcdb0;
+
+    @include vw(width, 135);
+    @include vw(height, 12);
+    @include vw(border-radius, 10);
+
+    &.collected {
+        background: linear-gradient(
+            90deg,
+            #c49a51,
+            #ebcd88
+        );
+    }
+}
+
+.collection_footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include vw(gap, 16);
+    @include vw(margin-top, 8);
+
+    span {
+        display: block;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            #c5a36e
+        );
+
+        @include vw(width, 100);
+
+        &:last-child {
+            transform: rotate(180deg);
+        }
+    }
+
+    i {
+        display: block;
+        transform: rotate(45deg);
+        background-color: #c5a36e;
+
+        @include vw(width, 12);
+        @include vw(height, 12);
+    }
+}

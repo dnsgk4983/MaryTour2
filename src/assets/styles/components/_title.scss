@@ -1,0 +1,27 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.title_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 12);
+}
+
+.title {
+    color: $color_text;
+    font-weight: 700;
+    text-align: center;
+
+    @include vw(font-size, 56);
+}
+
+.subtitle {
+    color: $color_gold;
+    font-weight: 600;
+    text-align: center;
+
+    @include vw(font-size, 24);
+    @include vw(letter-spacing, 3);
+}

@@ -1,0 +1,192 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_log_list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.admin_log_item {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 14px 0;
+    gap: 10px;
+    border-bottom: 1px solid rgba(198, 163, 106, 0.25);
+
+    &:first-child {
+        padding-top: 0;
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.admin_log_icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+
+    svg {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+.admin_log_success {
+    background-color: $admin_success_background;
+    color: $admin_success;
+}
+
+.admin_log_warning {
+    background-color: $admin_error_background;
+    color: $admin_error;
+}
+
+.admin_log_content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    gap: 4px;
+
+    strong {
+        color: $admin_text;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    small {
+        color: $admin_muted;
+        font-size: 11px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+}
+
+.admin_log_result {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    strong {
+        color: $admin_success;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    small {
+        color: $admin_muted;
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .admin_log_blocked {
+        color: $admin_error;
+    }
+}
+
+.admin_anomaly_summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.admin_anomaly_metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    min-height: 100px;
+    padding: 12px 6px;
+    gap: 6px;
+    border: 1px solid $admin_border;
+    border-radius: 8px;
+    background-color: #fffaf0;
+    color: $admin_text;
+    font-family: inherit;
+    cursor: pointer;
+
+    span {
+        color: $admin_muted;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.4;
+        word-break: keep-all;
+    }
+
+    strong {
+        color: $admin_error;
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    small {
+        color: $admin_muted;
+        font-size: 10px;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $admin_focus;
+        outline-offset: 2px;
+    }
+}
+
+.admin_anomaly_selected {
+    border-color: $admin_primary;
+    background-color: #f1e3c5;
+}
+
+.admin_log_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    strong {
+        color: $admin_text;
+        font-size: 13px;
+        font-weight: 700;
+    }
+}
+
+.admin_filter_button {
+    min-height: 36px;
+    padding: 6px 10px;
+    border: 1px solid $admin_border;
+    border-radius: 6px;
+    background-color: #fffaf0;
+    color: $admin_primary;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid $admin_focus;
+    }
+}
+
+.admin_dashboard_empty {
+    padding: 28px 12px;
+    color: $admin_muted;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.admin_dashboard_note {
+    color: $admin_muted;
+    font-size: 11px;
+    line-height: 1.6;
+    word-break: keep-all;
+}

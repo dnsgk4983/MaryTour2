@@ -1,0 +1,229 @@
+@use "../abstracts/mixins" as *;
+
+.screen.gps_test {
+    position: relative;
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+
+    @include vw(padding, 0);
+    @include vw(gap, 0);
+}
+
+.gps_test_scene {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    background-color: #493c33;
+
+    @include vw(padding, 20, 0);
+    @include vw(gap, 45);
+}
+
+.gps_test_background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55) saturate(0.75);
+    pointer-events: none;
+}
+
+.gps_test_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        180deg,
+        rgba(30, 20, 12, 0.12),
+        rgba(30, 20, 12, 0.55)
+    );
+    pointer-events: none;
+}
+
+.gps_test_heading {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+
+    @include vw(width, 1080);
+    @include vw(padding, 8, 120);
+    @include vw(gap, 8);
+
+    .btn_icon_round {
+        position: absolute;
+
+        @include vw(top, 0);
+        @include vw(left, 30);
+    }
+}
+
+.gps_test_subtitle {
+    color: #e8c58c;
+    font-weight: 600;
+
+    @include vw(font-size, 22);
+    @include vw(letter-spacing, 4);
+}
+
+.gps_test_title {
+    color: #fff1d5;
+    font-weight: 700;
+
+    @include vw(font-size, 50);
+}
+
+.gps_test_panel {
+    flex-shrink: 1;
+    min-height: 0;
+
+    @include vw(padding, 82, 42, 40);
+    @include vw(gap, 24);
+}
+
+.gps_test_description {
+    color: #927653;
+    text-align: center;
+
+    @include vw(font-size, 28);
+}
+
+.gps_test_message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #927653;
+    text-align: center;
+    word-break: keep-all;
+    line-height: 1.4;
+
+    @include vw(min-height, 70);
+    @include vw(gap, 6);
+    @include vw(font-size, 26);
+
+    small {
+        @include vw(font-size, 23);
+    }
+}
+
+.gps_message_error {
+    color: #9b5744;
+    font-weight: 600;
+}
+
+.gps_test_footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a38964;
+
+    @include vw(gap, 8);
+
+    p {
+        font-weight: 600;
+
+        @include vw(font-size, 19);
+        @include vw(letter-spacing, 4);
+    }
+
+    button {
+        min-height: 32px;
+        color: #927653;
+        text-decoration: underline;
+
+        @include vw(font-size, 23);
+    }
+}
+
+@media (max-height: 780px) {
+    .gps_test_scene {
+        @include vw(padding, 12, 0);
+        @include vw(gap, 24);
+    }
+
+    .gps_test_panel {
+        @include vw(padding, 56, 32, 20);
+        @include vw(gap, 14);
+
+        .ornament_ribbon {
+            @include vw(width, 230);
+            @include vw(top, -36);
+        }
+    }
+
+    .gps_station_list {
+        @include vw(gap, 10);
+    }
+
+    .gps_station {
+        @include vw(min-height, 120);
+        @include vw(padding, 10, 18);
+        @include vw(gap, 16);
+    }
+
+    .gps_station_image {
+        @include vw(width, 85);
+        @include vw(height, 85);
+    }
+
+    .gps_station_info {
+        strong {
+            @include vw(font-size, 30);
+        }
+
+        small {
+            @include vw(font-size, 22);
+        }
+    }
+
+    .gps_test_message {
+        @include vw(min-height, 44);
+        @include vw(font-size, 24);
+    }
+
+    .gps_test_panel {
+        .collection_detail_progress {
+            @include vw(margin-top, 0);
+            @include vw(gap, 8);
+        }
+    }
+}
+
+@media (max-height: 600px) {
+    .gps_test_description {
+        display: none;
+    }
+
+    .gps_test_panel {
+        @include vw(padding, 42, 24, 12);
+        @include vw(gap, 8);
+    }
+
+    .gps_station {
+        @include vw(min-height, 86);
+        @include vw(padding, 6, 14);
+    }
+
+    .gps_station_image {
+        @include vw(width, 64);
+        @include vw(height, 64);
+    }
+
+    .gps_test_footer {
+        p {
+            display: none;
+        }
+    }
+}

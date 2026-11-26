@@ -1,0 +1,368 @@
+@use "../abstracts/mixins" as *;
+
+.screen.home {
+    position: relative;
+    display: block;
+    min-height: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+
+    @include vw(padding, 0);
+    @include vw(gap, 0);
+}
+
+.atelier_scene {
+    --atelier_unit: min(
+        calc(100vw / 1080),
+        calc(540px / 1080),
+        calc(100dvh / 1920)
+    );
+
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #493c33;
+
+    > .scene_background {
+        filter: brightness(0.8) saturate(0.82);
+    }
+}
+
+.atelier_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(
+            ellipse at 50% 35%,
+            transparent 25%,
+            rgba(28, 19, 12, 0.24) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(25, 17, 10, 0.35),
+            transparent 22%,
+            transparent 43%,
+            rgba(30, 19, 10, 0.35) 65%,
+            rgba(30, 19, 10, 0.88) 100%
+        );
+    pointer-events: none;
+}
+
+.atelier_light {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(
+        ellipse at 28% 32%,
+        rgba(255, 224, 170, 0.15),
+        transparent 48%
+    );
+    pointer-events: none;
+}
+
+.atelier_heading {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: max(
+        calc(var(--atelier_unit) * 24),
+        env(safe-area-inset-top)
+    );
+    gap: calc(var(--atelier_unit) * 4);
+
+    @include vw(left, 0);
+    @include vw(right, 0);
+
+    .scene_title {
+        color: #fff1d5;
+        font-size: calc(var(--atelier_unit) * 58);
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: calc(var(--atelier_unit) * 8);
+    }
+
+    .scene_subtitle {
+        color: #e8c58c;
+        font-size: calc(var(--atelier_unit) * 20);
+        letter-spacing: calc(var(--atelier_unit) * 4);
+    }
+}
+
+.atelier_ribbon {
+    display: block;
+    width: calc(var(--atelier_unit) * 240);
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.atelier_heading_line {
+    width: calc(var(--atelier_unit) * 220);
+    height: calc(var(--atelier_unit) * 2);
+    margin-top: calc(var(--atelier_unit) * 10);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e8c58c,
+        transparent
+    );
+}
+
+.atelier_back {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: calc(var(--atelier_unit) * 15);
+    left: calc(var(--atelier_unit) * 30);
+    width: max(44px, calc(var(--atelier_unit) * 84));
+    height: max(44px, calc(var(--atelier_unit) * 84));
+    border: 1px solid rgba(255, 226, 177, 0.6);
+    border-radius: 50%;
+    background-color: rgba(51, 34, 21, 0.48);
+    color: #fff1d5;
+    transition: background-color 0.2s ease;
+
+    svg {
+        width: calc(var(--atelier_unit) * 42);
+        height: calc(var(--atelier_unit) * 42);
+    }
+
+    &:not(:disabled):active {
+        background-color: rgba(130, 96, 52, 0.7);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #f5d982;
+        outline-offset: 3px;
+    }
+}
+
+.atelier_stage {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    top: calc(var(--atelier_unit) * 230);
+    bottom: calc(var(--atelier_unit) * 610);
+    overflow: hidden;
+    pointer-events: none;
+    mask-image: linear-gradient(
+        180deg,
+        #000 0%,
+        #000 82%,
+        transparent 100%
+    );
+
+    @include vw(left, 0);
+    @include vw(right, 0);
+}
+
+.atelier_character {
+    position: relative;
+    flex-shrink: 0;
+    width: calc(var(--atelier_unit) * 930);
+    transform-origin: center bottom;
+    pointer-events: none;
+
+    .object_image {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(
+            0 5px 14px rgba(30, 18, 8, 0.2)
+        );
+    }
+}
+
+.atelier_interface {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: max(
+        calc(var(--atelier_unit) * 24),
+        env(safe-area-inset-bottom)
+    );
+    gap: calc(var(--atelier_unit) * 14);
+
+    @include vw(left, 0);
+    @include vw(right, 0);
+}
+
+.atelier_dialogue {
+    position: relative;
+    width: calc(var(--atelier_unit) * 960);
+
+    .dialogue_ornament {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: calc(var(--atelier_unit) * 160);
+        padding: calc(var(--atelier_unit) * 38)
+            calc(var(--atelier_unit) * 100);
+        border: 1px solid rgba(216, 180, 120, 0.85);
+        border-radius: calc(var(--atelier_unit) * 20);
+        background-color: #f8e9cb;
+        box-shadow: 0 5px 16px rgba(20, 12, 6, 0.28);
+    }
+
+    .dialogue_background {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.24;
+        border-radius: inherit;
+        pointer-events: none;
+    }
+
+    .dialogue_name {
+        top: calc(var(--atelier_unit) * -22);
+        left: calc(var(--atelier_unit) * 45);
+        padding: calc(var(--atelier_unit) * 6)
+            calc(var(--atelier_unit) * 34);
+        border: 1px solid #e4c28a;
+        border-radius: calc(var(--atelier_unit) * 12);
+        background: linear-gradient(
+            180deg,
+            #9e7847,
+            #705032
+        );
+        font-size: calc(var(--atelier_unit) * 27);
+    }
+
+    .dialogue_text {
+        position: relative;
+        color: #60452f;
+        font-size: max(
+            12px,
+            calc(var(--atelier_unit) * 31)
+        );
+        font-weight: 600;
+        line-height: 1.5;
+    }
+}
+
+.atelier_collection {
+    position: relative;
+
+    .stamp_collection {
+        gap: calc(var(--atelier_unit) * 2);
+    }
+
+    .collection_case {
+        width: calc(var(--atelier_unit) * 570);
+        height: calc(var(--atelier_unit) * 389);
+    }
+
+    .stamp_slot {
+        top: calc(var(--atelier_unit) * 196);
+        width: calc(var(--atelier_unit) * 105);
+        height: calc(var(--atelier_unit) * 105);
+    }
+
+    .stamp_slot_1 {
+        left: calc(var(--atelier_unit) * 105);
+    }
+
+    .stamp_slot_2 {
+        left: calc(var(--atelier_unit) * 232);
+    }
+
+    .stamp_slot_3 {
+        left: calc(var(--atelier_unit) * 359);
+    }
+
+    .stamp_image {
+        width: calc(var(--atelier_unit) * 100);
+        height: calc(var(--atelier_unit) * 100);
+    }
+
+    .collection_summary {
+        gap: calc(var(--atelier_unit) * 10);
+    }
+
+    .collection_status {
+        gap: calc(var(--atelier_unit) * 18);
+        font-size: max(
+            11px,
+            calc(var(--atelier_unit) * 28)
+        );
+
+        strong {
+            font-size: calc(var(--atelier_unit) * 38);
+        }
+    }
+
+    .collection_steps {
+        gap: calc(var(--atelier_unit) * 12);
+    }
+
+    .collection_step {
+        width: calc(var(--atelier_unit) * 65);
+        height: calc(var(--atelier_unit) * 7);
+    }
+}
+
+.atelier_actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--atelier_unit) * 16);
+    margin-top: calc(var(--atelier_unit) * 6);
+
+    .btn_image {
+        width: calc(var(--atelier_unit) * 495);
+        height: max(
+            44px,
+            calc(var(--atelier_unit) * 165)
+        );
+        min-height: 0;
+        font-size: max(
+            11px,
+            calc(var(--atelier_unit) * 30)
+        );
+        font-weight: 700;
+        filter: drop-shadow(
+            0 4px 8px rgba(20, 12, 6, 0.28)
+        );
+
+        &:disabled {
+            opacity: 0.65;
+            filter: saturate(0.45);
+        }
+    }
+
+    .btn_image_content {
+        gap: calc(var(--atelier_unit) * 10);
+        padding-top: calc(var(--atelier_unit) * 12);
+        white-space: nowrap;
+    }
+
+    .btn_icon {
+        width: calc(var(--atelier_unit) * 30);
+        height: calc(var(--atelier_unit) * 30);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .atelier_back {
+        transition: none;
+    }
+}

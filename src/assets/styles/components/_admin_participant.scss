@@ -1,0 +1,220 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_search {
+    display: flex;
+    min-width: 0;
+    gap: 8px;
+
+    input {
+        flex: 1;
+        box-sizing: border-box;
+        min-width: 0;
+        min-height: 50px;
+        padding: 12px;
+        border: 1px solid $admin_border;
+        border-radius: 8px;
+        outline: none;
+        background-color: #fffcf5;
+        color: $admin_text;
+        font-family: inherit;
+        font-size: 16px;
+
+        &:focus {
+            border-color: $admin_focus;
+            box-shadow: 0 0 0 3px rgba(180, 139, 80, 0.15);
+        }
+    }
+
+    .admin_button {
+        flex-shrink: 0;
+        min-width: 68px;
+    }
+}
+
+.admin_participant {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 18px;
+    padding-top: 18px;
+    border-top: 1px solid $admin_border;
+}
+
+.admin_participant_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    p {
+        color: $admin_muted;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    h3 {
+        color: $admin_text;
+        font-size: 23px;
+        font-weight: 800;
+        line-height: 1.5;
+    }
+}
+
+.admin_status {
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.admin_status_available {
+    border-color: #b8cdb0;
+    background-color: $admin_success_background;
+    color: $admin_success;
+}
+
+.admin_status_blocked {
+    border-color: #e6b7a9;
+    background-color: $admin_error_background;
+    color: $admin_error;
+}
+
+.admin_section_label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    strong {
+        color: $admin_primary;
+        font-size: 14px;
+        font-weight: 800;
+    }
+}
+
+.admin_station_grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.admin_station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 106px;
+    padding: 12px 5px;
+    gap: 7px;
+    border: 1px solid $admin_border;
+    border-radius: 9px;
+    text-align: center;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    strong {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.4;
+        word-break: keep-all;
+    }
+
+    small {
+        font-size: 11px;
+        font-weight: 600;
+    }
+}
+
+.admin_station_collected {
+    border-color: #c8d3b7;
+    background-color: #edf4e7;
+    color: #416b46;
+}
+
+.admin_station_empty {
+    background-color: #f1e8d8;
+    color: #80664c;
+}
+
+.admin_empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 210px;
+    padding: 20px;
+    gap: 12px;
+    color: $admin_muted;
+    text-align: center;
+
+    svg {
+        width: 40px;
+        height: 40px;
+        color: #b48b50;
+    }
+
+    h3 {
+        color: $admin_text;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.7;
+        word-break: keep-all;
+    }
+}
+
+.admin_complete {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h2 {
+        color: $admin_text;
+        font-size: 25px;
+        font-weight: 800;
+    }
+}
+
+.admin_complete_icon {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border: 1px solid #b8cdb0;
+    border-radius: 50%;
+    background-color: $admin_success_background;
+    color: $admin_success;
+
+    svg {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.admin_complete_eyebrow {
+    color: $admin_primary;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.admin_complete_description {
+    color: $admin_muted;
+    font-size: 13px;
+    line-height: 1.7;
+    word-break: keep-all;
+}

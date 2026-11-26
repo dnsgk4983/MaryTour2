@@ -1,0 +1,78 @@
+@use "../abstracts/mixins" as *;
+
+.ornament_panel {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: #c7a36d;
+    background: radial-gradient(
+        ellipse at top,
+        #fff9eb,
+        #f5e8ce
+    );
+    box-shadow:
+        0 10px 40px rgba(20, 12, 6, 0.25),
+        inset 0 0 20px rgba(177, 139, 80, 0.1);
+
+    @include vw(width, 960);
+    @include vw(padding, 100, 48, 48);
+    @include vw(border-width, 3);
+    @include vw(border-radius, 30);
+    @include vw(gap, 24);
+
+    &::before {
+        position: absolute;
+        z-index: -1;
+        border-style: solid;
+        border-color: rgba(191, 153, 94, 0.48);
+        content: "";
+        pointer-events: none;
+
+        @include vw(inset, 13);
+        @include vw(border-width, 1);
+        @include vw(border-radius, 21);
+    }
+}
+
+.ornament_ribbon {
+    position: absolute;
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    pointer-events: none;
+
+    @include vw(top, -48);
+    @include vw(left, 0);
+    @include vw(right, 0);
+    @include vw(width, 280);
+}
+
+.ornament_heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 12);
+}
+
+.ornament_subtitle {
+    color: #aa8957;
+    font-weight: 600;
+    text-align: center;
+
+    @include vw(font-size, 22);
+    @include vw(letter-spacing, 5);
+}
+
+.ornament_title {
+    color: #705039;
+    font-weight: 700;
+    text-align: center;
+    word-break: keep-all;
+
+    @include vw(font-size, 38);
+}

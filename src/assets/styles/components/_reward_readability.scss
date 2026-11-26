@@ -1,0 +1,354 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.reward_scene {
+    --reward_text_primary: #483321;
+    --reward_text_secondary: #725438;
+    --reward_text_accent: #805a28;
+
+    @include vw(padding, 48, 48, 40);
+    @include vw(gap, 20);
+}
+
+.reward_shade {
+    background: linear-gradient(
+        180deg,
+        rgba(35, 23, 14, 0.78),
+        rgba(49, 33, 21, 0.15) 42%,
+        rgba(35, 23, 14, 0.68)
+    );
+}
+
+.reward_heading {
+    @include vw(gap, 10);
+
+    h1 {
+        color: #fff9ed;
+        font-weight: 800;
+        line-height: 1.3;
+        text-shadow: 0 3px 12px #39271a;
+
+        @include vw(font-size, 54);
+    }
+}
+
+.reward_eyebrow {
+    color: #f4dba7;
+    font-weight: 700;
+
+    @include vw(font-size, 23);
+    @include vw(letter-spacing, 5);
+}
+
+.reward_subtitle {
+    color: #fff3dc;
+    font-weight: 500;
+    text-shadow: 0 2px 6px #39271a;
+
+    @include vw(font-size, 27);
+}
+
+.reward_stage {
+    container-type: size;
+}
+
+.reward_card {
+    isolation: isolate;
+    box-sizing: border-box;
+    width: min(vw(780), 37dvh, 69cqh);
+    height: auto;
+    aspect-ratio: 3 / 4;
+    filter: drop-shadow(
+        0 12px 20px rgba(48, 29, 14, 0.3)
+    );
+}
+
+.reward_card_artwork {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    filter: none !important;
+}
+
+.reward_card_content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    color: var(--reward_text_primary);
+    text-align: center;
+    word-break: keep-all;
+
+    @include vw(padding, 90, 75, 115);
+    @include vw(gap, 18);
+}
+
+.reward_card_eyebrow,
+.reward_card_subtitle,
+.reward_card_divider,
+.reward_card_signature {
+    display: none;
+}
+
+.reward_card_title {
+    color: #51351e;
+    font-weight: 800;
+    line-height: 1.3;
+
+    @include vw(font-size, 48);
+}
+
+.reward_card_message {
+    color: #60462e;
+    font-weight: 500;
+    line-height: 1.7;
+
+    @include vw(max-width, 360);
+    @include vw(font-size, 26);
+}
+
+.reward_card_collection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include vw(gap, 6);
+    @include vw(margin-top, 12);
+
+    strong {
+        color: #805a28;
+        font-weight: 800;
+        line-height: 1.2;
+
+        @include vw(font-size, 66);
+    }
+
+    span {
+        color: #60462e;
+        font-weight: 600;
+
+        @include vw(font-size, 22);
+    }
+}
+
+.reward_opened {
+    .reward_envelope_button {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .reward_glow {
+        opacity: 0.7;
+    }
+}
+
+.reward_panel {
+    border-color: #c9a66c;
+    background: #fff8e9;
+    color: var(--reward_text_primary);
+    box-shadow: 0 8px 24px rgba(27, 17, 10, 0.3);
+
+    @include vw(padding, 28, 32, 20);
+    @include vw(gap, 16);
+    @include vw(border-radius, 24);
+}
+
+.reward_frame {
+    display: none;
+}
+
+.reward_message {
+    color: var(--reward_text_primary);
+    font-weight: 600;
+    line-height: 1.5;
+
+    @include vw(font-size, 28);
+}
+
+.reward_waiting {
+    @include vw(gap, 12);
+
+    > .reward_message {
+        display: none;
+    }
+}
+
+.reward_status {
+    border: none;
+    background: transparent;
+
+    @include vw(padding, 8, 0);
+    @include vw(gap, 10);
+
+    small {
+        color: #60462e;
+        font-weight: 500;
+        line-height: 1.5;
+
+        @include vw(font-size, 27);
+    }
+}
+
+.reward_status_icon {
+    color: #805a28;
+
+    @include vw(width, 48);
+    @include vw(height, 48);
+
+    svg {
+        @include vw(width, 44);
+        @include vw(height, 44);
+    }
+}
+
+.reward_status_title {
+    color: #51351e;
+    font-weight: 800;
+
+    @include vw(font-size, 40);
+}
+
+.reward_notice {
+    color: #725438;
+    font-weight: 500;
+    line-height: 1.5;
+
+    @include vw(font-size, 22);
+}
+
+.reward_primary {
+    border-color: #a77e43;
+    background: linear-gradient(
+        180deg,
+        #f8e3b3,
+        #dfbb7c
+    );
+    color: #483321;
+    font-weight: 800;
+
+    @include vw(font-size, 32);
+    @include vw(padding, 24, 20);
+}
+
+.reward_secondary {
+    color: #60462e;
+    font-weight: 700;
+
+    @include vw(font-size, 27);
+}
+
+.reward_preview_label {
+    color: #725438;
+    font-weight: 600;
+
+    @include vw(font-size, 17);
+    @include vw(letter-spacing, 2);
+}
+
+@media (max-height: 780px) {
+    .reward_scene {
+        @include vw(padding, 28, 36, 24);
+        @include vw(gap, 12);
+    }
+
+    .reward_heading {
+        @include vw(gap, 6);
+
+        h1 {
+            @include vw(font-size, 46);
+        }
+    }
+
+    .reward_card_content {
+        @include vw(padding, 70, 60, 90);
+        @include vw(gap, 12);
+    }
+
+    .reward_card_title {
+        @include vw(font-size, 40);
+    }
+
+    .reward_card_message {
+        @include vw(font-size, 23);
+    }
+
+    .reward_card_collection {
+        @include vw(margin-top, 6);
+
+        strong {
+            @include vw(font-size, 54);
+        }
+
+        span {
+            @include vw(font-size, 20);
+        }
+    }
+
+    .reward_panel {
+        @include vw(padding, 20, 24, 16);
+        @include vw(gap, 10);
+    }
+
+    .reward_status_title {
+        @include vw(font-size, 34);
+    }
+
+    .reward_status {
+        small {
+            @include vw(font-size, 24);
+        }
+    }
+
+    .reward_primary {
+        @include vw(padding, 18, 20);
+    }
+}
+
+@media (max-height: 650px) {
+    .reward_card_content {
+        @include vw(padding, 50, 40, 65);
+        @include vw(gap, 8);
+    }
+
+    .reward_card_title {
+        @include vw(font-size, 32);
+    }
+
+    .reward_card_message {
+        display: none;
+    }
+
+    .reward_card_collection {
+        strong {
+            @include vw(font-size, 44);
+        }
+
+        span {
+            @include vw(font-size, 18);
+        }
+    }
+
+    .reward_status_icon {
+        display: none;
+    }
+
+    .reward_status_title {
+        @include vw(font-size, 30);
+    }
+
+    .reward_notice {
+        @include vw(font-size, 20);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reward_action {
+        transition: none;
+    }
+}

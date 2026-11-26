@@ -1,0 +1,256 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_dashboard_metric {
+    justify-content: center;
+    min-height: 128px;
+    gap: 8px;
+}
+
+.admin_dashboard_metric_highlight {
+    border-color: #b48b50;
+    background: linear-gradient(
+        160deg,
+        #fff8e9,
+        #eeddb8
+    );
+}
+
+.admin_dashboard_metric_label {
+    color: $admin_muted;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.admin_dashboard_metric_value {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+
+    strong {
+        color: $admin_text;
+        font-size: 34px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.2;
+    }
+
+    span {
+        color: $admin_primary;
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+.admin_dashboard_metric {
+    small {
+        color: $admin_muted;
+        font-size: 11px;
+        line-height: 1.5;
+        word-break: keep-all;
+    }
+}
+
+.admin_rate_card {
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+
+    h2 {
+        color: $admin_text;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.5;
+        word-break: keep-all;
+    }
+
+    p {
+        color: $admin_muted;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
+.admin_rate_chart {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 116px;
+    height: 116px;
+
+    svg {
+        display: block;
+        width: 116px;
+        height: 116px;
+        fill: none;
+        stroke-width: 9;
+    }
+}
+
+.admin_rate_track {
+    stroke: #e9dcc2;
+}
+
+.admin_rate_fill {
+    stroke: #b48b50;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.admin_rate_value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    strong {
+        color: $admin_text;
+        font-size: 26px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+    }
+
+    span {
+        color: $admin_primary;
+        font-size: 13px;
+        font-weight: 700;
+    }
+}
+
+.admin_station_stats_list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.admin_station_stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin_station_stat_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    strong {
+        color: $admin_text;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    span {
+        flex-shrink: 0;
+        color: $admin_muted;
+        font-size: 12px;
+    }
+}
+
+.admin_station_stat_caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $admin_muted;
+    font-size: 11px;
+
+    strong {
+        color: $admin_primary;
+        font-weight: 700;
+    }
+}
+
+.admin_waiting_summary {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+        color: $admin_text;
+        font-size: 17px;
+        font-weight: 800;
+        line-height: 1.5;
+    }
+
+    p {
+        margin-top: 5px;
+        color: $admin_muted;
+        font-size: 12px;
+        line-height: 1.6;
+        word-break: keep-all;
+    }
+}
+
+.admin_waiting_value {
+    display: flex;
+    flex-shrink: 0;
+    align-items: baseline;
+    gap: 5px;
+
+    strong {
+        color: $admin_primary;
+        font-size: 32px;
+        font-weight: 800;
+    }
+
+    span {
+        color: $admin_muted;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin_dashboard_metric {
+        min-height: 116px;
+        padding: 16px;
+    }
+
+    .admin_dashboard_metric_value {
+        strong {
+            font-size: 30px;
+        }
+    }
+
+    .admin_rate_card {
+        padding: 14px 8px;
+        gap: 10px;
+
+        h2 {
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 11px;
+        }
+    }
+
+    .admin_rate_chart {
+        width: 84px;
+        height: 84px;
+
+        svg {
+            width: 84px;
+            height: 84px;
+        }
+    }
+
+    .admin_rate_value {
+        strong {
+            font-size: 19px;
+        }
+
+        span {
+            font-size: 10px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin_rate_fill {
+        transition: none;
+    }
+}

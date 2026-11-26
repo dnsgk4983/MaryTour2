@@ -1,0 +1,102 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_card {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 22px;
+    gap: 18px;
+    border: 1px solid #c6a36a;
+    border-radius: 14px;
+    background: linear-gradient(
+        160deg,
+        #fffdf5,
+        #fff8e9,
+        #f5ead3
+    );
+    color: $admin_text;
+    box-shadow: 0 8px 24px rgba(30, 18, 10, 0.18);
+}
+
+.admin_card_heading {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    h2 {
+        color: $admin_text;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1.4;
+    }
+
+    span {
+        color: $admin_muted;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+}
+
+.admin_record {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 0;
+    padding: 4px 0;
+    border-top: 1px solid $admin_border;
+    border-bottom: 1px solid $admin_border;
+
+    > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        padding: 12px 0;
+        gap: 12px;
+
+        & + div {
+            border-top: 1px solid rgba(198, 163, 106, 0.2);
+        }
+    }
+
+    dt {
+        flex-shrink: 0;
+        color: $admin_muted;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    dd {
+        min-width: 0;
+        margin: 0;
+        color: $admin_text;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+}
+
+.admin_button_outline {
+    border: 1px solid $admin_border;
+    background-color: #fffaf0;
+    color: $admin_text;
+
+    &:hover:not(:disabled) {
+        background-color: #f2e5cb;
+    }
+}
+
+.admin_button:disabled {
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .admin_card {
+        padding: 18px;
+        gap: 16px;
+    }
+}

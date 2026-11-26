@@ -1,0 +1,218 @@
+@use "../abstracts/mixins" as *;
+
+.scanner_frame {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #302b26;
+    border-style: solid;
+    border-color: #c6a36a;
+
+    @include vw(width, 820);
+    @include vw(height, 820);
+    @include vw(border-width, 2);
+    @include vw(border-radius, 22);
+}
+
+.scanner_camera {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: none !important;
+
+    video {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain;
+    }
+}
+
+.scanner_placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #d9c5a4;
+    background: radial-gradient(
+        circle,
+        #493e31,
+        #302b26
+    );
+
+    @include vw(gap, 24);
+
+    svg {
+        @include vw(width, 110);
+        @include vw(height, 110);
+    }
+
+    p {
+        color: #d5c1a1;
+        font-weight: 500;
+        text-align: center;
+
+        @include vw(font-size, 28);
+    }
+}
+
+.scanner_guide {
+    position: absolute;
+    z-index: 2;
+    margin: auto;
+    pointer-events: none;
+
+    @include vw(inset, 0);
+    @include vw(width, 580);
+    @include vw(height, 580);
+}
+
+.scanner_corner {
+    position: absolute;
+    border-style: solid;
+    border-color: #e9ca89;
+    border-width: 0;
+    filter: drop-shadow(
+        0 0 4px rgba(245, 217, 130, 0.35)
+    );
+
+    @include vw(width, 75);
+    @include vw(height, 75);
+}
+
+.scanner_corner_tl {
+    top: 0;
+    left: 0;
+
+    @include vw(border-top-width, 6);
+    @include vw(border-left-width, 6);
+    @include vw(border-top-left-radius, 18);
+}
+
+.scanner_corner_tr {
+    top: 0;
+    right: 0;
+
+    @include vw(border-top-width, 6);
+    @include vw(border-right-width, 6);
+    @include vw(border-top-right-radius, 18);
+}
+
+.scanner_corner_bl {
+    bottom: 0;
+    left: 0;
+
+    @include vw(border-bottom-width, 6);
+    @include vw(border-left-width, 6);
+    @include vw(border-bottom-left-radius, 18);
+}
+
+.scanner_corner_br {
+    right: 0;
+    bottom: 0;
+
+    @include vw(border-right-width, 6);
+    @include vw(border-bottom-width, 6);
+    @include vw(border-bottom-right-radius, 18);
+}
+
+.scanner_line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffe3a1,
+        transparent
+    );
+    box-shadow: 0 0 8px rgba(255, 221, 145, 0.45);
+
+    @include vw(height, 3);
+}
+
+.scanner_frame.motion_enabled {
+    .scanner_line {
+        animation: scanner_sweep 2.8s ease-in-out infinite;
+    }
+}
+
+.scanner_frame.motion_disabled {
+    .scanner_line {
+        display: none;
+    }
+}
+
+.scanner_frame_success {
+    .scanner_corner {
+        border-color: #fff0bd;
+    }
+}
+
+.scanner_success {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 50%;
+    background-color: rgba(177, 138, 72, 0.95);
+    color: #fff9eb;
+
+    @include vw(width, 150);
+    @include vw(height, 150);
+
+    svg {
+        @include vw(width, 86);
+        @include vw(height, 86);
+    }
+}
+
+.scanner_message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #927653;
+    text-align: center;
+    word-break: keep-all;
+    line-height: 1.5;
+
+    @include vw(min-height, 80);
+    @include vw(font-size, 28);
+}
+
+.scanner_message_error {
+    color: #9b5744;
+    font-weight: 600;
+}
+
+@keyframes scanner_sweep {
+    0%,
+    100% {
+        top: 0;
+        opacity: 0.4;
+    }
+
+    50% {
+        @include vw(top, 575);
+
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scanner_frame {
+        .scanner_line {
+            display: none;
+            animation: none;
+        }
+    }
+}

@@ -1,0 +1,135 @@
+@use "../abstracts/admin_variables" as *;
+
+.admin_stock_grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.admin_metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    padding: 14px 6px;
+    gap: 5px;
+    border: 1px solid #e4d3b3;
+    border-radius: 9px;
+    background-color: #fffaf0;
+
+    span {
+        color: $admin_muted;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    strong {
+        color: $admin_text;
+        font-size: 29px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        line-height: 1.3;
+    }
+
+    small {
+        color: $admin_muted;
+        font-size: 11px;
+    }
+}
+
+.admin_metric_remaining {
+    border-color: #c6a36a;
+    background-color: #f1e3c5;
+
+    strong {
+        color: $admin_primary;
+    }
+}
+
+.admin_stock_progress {
+    display: block;
+    align-self: stretch;
+    width: auto;
+    height: 8px;
+    overflow: hidden;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #e9dcc2;
+
+    &::-webkit-progress-bar {
+        border-radius: 8px;
+        background-color: #e9dcc2;
+    }
+
+    &::-webkit-progress-value {
+        border-radius: 8px;
+        background-color: #b48b50;
+    }
+
+    &::-moz-progress-bar {
+        border-radius: 8px;
+        background-color: #b48b50;
+    }
+}
+
+.admin_stock_caption {
+    color: $admin_muted;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: right;
+}
+
+.admin_test_list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.admin_test_item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    min-height: 64px;
+    padding: 12px;
+    gap: 5px;
+    border: 1px solid $admin_border;
+    border-radius: 8px;
+    background-color: #fffaf0;
+    color: $admin_text;
+    text-align: left;
+    cursor: pointer;
+
+    strong {
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    span {
+        color: $admin_muted;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    &:hover {
+        border-color: $admin_primary;
+        background-color: #f2e5cb;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $admin_focus;
+        outline-offset: 2px;
+    }
+}
+
+.admin_test_actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+
+    .admin_button {
+        padding: 10px 6px;
+        font-size: 12px;
+    }
+}

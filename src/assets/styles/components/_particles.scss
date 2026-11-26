@@ -1,0 +1,30 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/functions" as *;
+
+.ambient_particles {
+    --scene_unit: #{vw(1)};
+
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
+.ambient_particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff2c5;
+    box-shadow: 0 0 8px #ffe4a0;
+    opacity: 0;
+
+    @include vw(width, 7);
+    @include vw(height, 7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient_particles {
+        display: none;
+    }
+}
